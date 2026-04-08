@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AJ Dadhania | Resume</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        background: #f3eadf;
+        color: #243126;
+        font-family: Georgia, "Times New Roman", serif;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      .bg-blur {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 0;
+      }
+
+      .blur-circle {
+        position: absolute;
+        border-radius: 9999px;
+        filter: blur(90px);
+      }
+
+      .blur-1 {
+        top: 0;
+        left: 0;
+        width: 18rem;
+        height: 18rem;
+        background: rgba(166, 61, 64, 0.08);
+      }
+
+      .blur-2 {
+        top: 8rem;
+        right: 0;
+        width: 20rem;
+        height: 20rem;
+        background: rgba(53, 92, 75, 0.1);
+      }
+
+      .blur-3 {
+        bottom: 0;
+        left: 33%;
+        width: 18rem;
+        height: 18rem;
+        background: rgba(201, 166, 107, 0.1);
+      }
+
+      .page {
+        position: relative;
+        z-index: 1;
+        max-width: 80rem;
+        margin: 0 auto;
+        padding: 2.5rem 1.5rem;
+      }
+
+      .hero-shell {
+        max-width: 64rem;
+        margin: 0 auto;
+      }
+
+      .hero-card {
+        display: grid;
+        grid-template-columns: 1fr 280px;
+        gap: 2rem;
+        align-items: center;
+        background: #f7f0e6;
+        border: 1px solid #d8c7b0;
+        border-radius: 2.2rem;
+        padding: 3rem;
+        box-shadow: 0 20px 50px rgba(60, 53, 44, 0.08);
+      }
+
+      .pill {
+        display: inline-flex;
+        padding: 0.35rem 1rem;
+        border-radius: 999px;
+        border: 1px solid rgba(140, 58, 61, 0.2);
+        background: rgba(140, 58, 61, 0.06);
+        color: #8c3a3d;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.82rem;
+        letter-spacing: 0.22em;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-title {
+        font-size: clamp(2.5rem, 5vw, 4.3rem);
+        line-height: 1.08;
+        letter-spacing: 0.03em;
+        font-weight: 600;
+      }
+
+      .hero-title span {
+        color: #8c3a3d;
+      }
+
+      .divider {
+        margin-top: 1.25rem;
+        width: 7rem;
+        height: 1px;
+        background: #c9a66b;
+      }
+
+      .hero-text {
+        margin-top: 1.5rem;
+        max-width: 42rem;
+        color: #586659;
+        font-size: 1.06rem;
+        line-height: 2;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .info-grid {
+        margin-top: 2.5rem;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .info-box {
+        border-radius: 1.7rem;
+        border: 1px solid #dfd0bb;
+        padding: 1.25rem;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .info-box.one {
+        background: #efe4d3;
+      }
+
+      .info-box.two {
+        background: #f2e8da;
+      }
+
+      .info-label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: #7a6b58;
+      }
+
+      .info-value {
+        margin-top: 0.55rem;
+        font-size: 1.1rem;
+        color: #243126;
+        font-weight: 500;
+      }
+
+      .profile-wrap {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .profile-card {
+        width: 100%;
+        max-width: 250px;
+        border-radius: 2rem;
+        border: 1px solid #dccbb6;
+        background: #fbf6ef;
+        padding: 1rem;
+        box-shadow: 0 16px 36px rgba(53, 92, 75, 0.1);
+      }
+
+      .profile-frame {
+        aspect-ratio: 4 / 5;
+        overflow: hidden;
+        border-radius: 1.6rem;
+        border: 1px solid #d9c8b2;
+        background: #e9dece;
+      }
+
+      .profile-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .cards-section {
+        margin-top: 2.5rem;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+      }
+
+      .feature-card {
+        border-radius: 2rem;
+        border: 1px solid #4a4a4a;
+        background: #333333;
+        padding: 1.5rem;
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.16);
+      }
+
+      .feature-inner {
+        border-radius: 1.4rem;
+        border: 1px solid #5a5a5a;
+        padding: 1.5rem;
+      }
+
+      .feature-inner.about {
+        background: #3b3b3b;
+      }
+
+      .feature-inner.education {
+        background: #383838;
+      }
+
+      .feature-inner.personality {
+        background: #3d3d3d;
+      }
+
+      .feature-label {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+      }
+
+      .feature-label.about {
+        color: #d8b98a;
+      }
+
+      .feature-label.education {
+        color: #9eb6a6;
+      }
+
+      .feature-label.personality {
+        color: #c9a66b;
+      }
+
+      .feature-text {
+        margin-top: 1rem;
+        color: #ece4d8;
+        line-height: 2;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .hobbies-section {
+        margin-top: 2.5rem;
+        border-radius: 2.5rem;
+        border: 1px solid #d8c7b0;
+        background: #355c4b;
+        color: #f7f0e5;
+        padding: 2.5rem;
+        box-shadow: 0 24px 60px rgba(53, 92, 75, 0.16);
+      }
+
+      .section-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 1.5rem;
+      }
+
+      .section-kicker {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        color: #d9c7a4;
+      }
+
+      .section-title {
+        margin-top: 0.55rem;
+        font-size: 2.4rem;
+        font-weight: 600;
+      }
+
+      .section-description {
+        max-width: 34rem;
+        color: #e8dcc9;
+        line-height: 1.9;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .hobby-grid {
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+      }
+
+      .hobby-card {
+        border-radius: 2rem;
+        border: 1px solid rgba(217, 199, 164, 0.2);
+        background: rgba(247, 240, 229, 0.08);
+        padding: 1.5rem;
+        transition: transform 0.3s ease, background 0.3s ease;
+      }
+
+      .hobby-card:hover {
+        transform: translateY(-4px);
+        background: rgba(247, 240, 229, 0.12);
+      }
+
+      .icon-box {
+        width: 3.5rem;
+        height: 3.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 1rem;
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+      }
+
+      .icon-pool {
+        background: rgba(140, 58, 61, 0.25);
+      }
+
+      .icon-badminton {
+        background: rgba(201, 166, 107, 0.2);
+      }
+
+      .hobby-title {
+        font-size: 2rem;
+        font-weight: 600;
+      }
+
+      .hobby-text {
+        margin-top: 0.8rem;
+        color: #e8dcc9;
+        line-height: 2;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .motto {
+        margin: 2.5rem 0 1.5rem;
+        border-radius: 2rem;
+        border: 1px solid #d8c7b0;
+        background: #8c3a3d;
+        color: #f7f0e5;
+        text-align: center;
+        padding: 2rem;
+        box-shadow: 0 18px 40px rgba(140, 58, 61, 0.14);
+      }
+
+      .motto-label {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: #ecd8ba;
+      }
+
+      .motto-text {
+        margin-top: 0.85rem;
+        font-size: 2rem;
+        font-weight: 600;
+      }
+
+      @media (max-width: 900px) {
+        .hero-card,
+        .cards-section,
+        .hobby-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-card {
+          padding: 2rem;
+        }
+
+        .profile-wrap {
+          justify-content: center;
+        }
+
+        .section-top {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .page {
+          padding: 1.5rem 1rem;
+        }
+
+        .info-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .motto-text {
+          font-size: 1.5rem;
+          line-height: 1.5;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-blur">
+      <div class="blur-circle blur-1"></div>
+      <div class="blur-circle blur-2"></div>
+      <div class="blur-circle blur-3"></div>
+    </div>
+
+    <main class="page">
+      <section class="hero-shell">
+        <div class="hero-card">
+          <div>
+            <p class="pill">PERSONAL RESUME WEBSITE</p>
+
+            <div>
+              <h1 class="hero-title">AJ <span>DADHANIA</span></h1>
+              <div class="divider"></div>
+              <p class="hero-text">
+                A motivated engineering student with a calm, disciplined mindset and a love for
+                academics, sport, and self-growth. I enjoy blending ambition, focus, and
+                personality in the way I learn and live.
+              </p>
+            </div>
+
+            <div class="info-grid">
+              <div class="info-box one">
+                <p class="info-label">Studying At</p>
+                <p class="info-value">G H Patel College of Engineering</p>
+              </div>
+              <div class="info-box two">
+                <p class="info-label">Focus</p>
+                <p class="info-value">Student • Learner • Athlete Mindset</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-wrap">
+            <div class="profile-card">
+              <div class="profile-frame">
+                <img
+                  src="https://placehold.co/600x750/e9dece/355c4b?text=Profile+Photo"
+                  alt="AJ Dadhania profile"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cards-section">
+        <div class="feature-card">
+          <div class="feature-inner about">
+            <p class="feature-label about">About Me</p>
+            <p class="feature-text">
+              I am AJ Dadhania, an engineering student who values consistency, learning, and
+              self-improvement. I enjoy staying active and building a strong mindset through both
+              academics and sports.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-inner education">
+            <p class="feature-label education">Education</p>
+            <p class="feature-text">
+              Currently studying at G H Patel College of Engineering and creating a solid academic
+              foundation for future opportunities and personal success.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-inner personality">
+            <p class="feature-label personality">Personality</p>
+            <p class="feature-text">
+              Focused, energetic, and grounded. I enjoy challenges that improve precision,
+              patience, discipline, and confidence.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="hobbies-section">
+        <div class="section-top">
+          <div>
+            <p class="section-kicker">Hobbies</p>
+            <h2 class="section-title">What I enjoy</h2>
+          </div>
+          <p class="section-description">
+            My hobbies help me stay sharp, competitive, and balanced while adding energy and
+            enjoyment to daily life.
+          </p>
+        </div>
+
+        <div class="hobby-grid">
+          <div class="hobby-card">
+            <div class="icon-box icon-pool">🎱</div>
+            <h3 class="hobby-title">8 Ball Pool</h3>
+            <p class="hobby-text">
+              I enjoy playing 8 ball pool because it improves focus, decision-making, and
+              strategy while making every game feel competitive and rewarding.
+            </p>
+          </div>
+
+          <div class="hobby-card">
+            <div class="icon-box icon-badminton">🏸</div>
+            <h3 class="hobby-title">Badminton</h3>
+            <p class="hobby-text">
+              Badminton keeps me active and disciplined. I enjoy the speed, reflexes, movement,
+              and intensity that make every match exciting.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="motto">
+        <p class="motto-label">Personal Motto</p>
+        <h2 class="motto-text">Learn with passion. Compete with focus. Grow with consistency.</h2>
+      </section>
+    </main>
+  </body>
+</html>
